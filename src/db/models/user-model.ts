@@ -11,11 +11,6 @@ export interface IUserModel extends IUser, Document {}
 
 const userSchema: Schema = new Schema(
 	{
-		email: {
-			type: String,
-			required: true,
-			trim: true,
-		},
 		username: {
 			type: String,
 			required: true,
@@ -25,6 +20,89 @@ const userSchema: Schema = new Schema(
 			type: String,
 			required: true,
 			trim: true,
+		},
+		firstName: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		lastName: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		sex: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		citizenship: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		dateOfBirts: {
+			type: Date,
+			required: false,
+			trim: true,
+		},
+		birthplace: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		email: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		phone: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		address: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		city: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		photoName: {
+			type: String,
+			required: false,
+			trim: true,
+		},
+		certificate: {
+			type: Array,
+			required: false,
+		},
+		experience: {
+			type: Array,
+			required: false,
+		},
+		education: {
+			type: Array,
+			required: false,
+		},
+		courses: {
+			type: Array,
+			required: false,
+		},
+		abilities: {
+			type: Array,
+			required: false,
+		},
+		hobbies: {
+			type: Array,
+			required: false,
+		},
+		achievements: {
+			type: Array,
+			required: false,
 		},
 	},
 	{ versionKey: false }
