@@ -4,11 +4,12 @@ interface IFormInput {
 	type?: string;
 	label: string;
 	id: string;
-	// onChange: (e: any) => void;
+	name: string;
+	onChange: (e: any) => void;
 	// onKeyDown: (e: any) => void;
 }
 
-const FormInput: FC<IFormInput> = ({ type, label, id, onChange, onKeyDown }) => {
+const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name, onKeyDown }) => {
 	return (
 		<>
 			<div className='form-floating mb-3'>
@@ -16,8 +17,9 @@ const FormInput: FC<IFormInput> = ({ type, label, id, onChange, onKeyDown }) => 
 					type={type || 'text'}
 					className='form-control'
 					id={id}
-					placeholder='name@example.com'
-					// onChange={onChange}
+					placeholder={label}
+					onChange={onChange}
+					name={name}
 					// onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onKeyDown(e)}
 					required
 				/>
