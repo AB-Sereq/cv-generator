@@ -9,7 +9,7 @@ interface IFormInput {
 	// onKeyDown: (e: any) => void;
 }
 
-const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name, onKeyDown }) => {
+const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name}) => {
 	return (
 		<>
 			<div className='form-floating mb-3'>

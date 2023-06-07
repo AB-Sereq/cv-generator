@@ -1,26 +1,35 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Types } from 'mongoose';
+import bcrypt from 'bcrypt'
+import prisma from '../../../../../prisma/prisma';
+import { NextResponse } from 'next/server'
 
-import dbConnection from '@/db/dbConnection';
-import userModel from '@/db/models/user-model';
+export async function POST(request: Request){
+    const body = await request.json();
+    const { name, email, password } = body;
 
-export const POST = async (req: NextRequest) => {
-	dbConnection();
+    if(!name || !email || !password) {
+        return new NextResponse('Missing Fields', { status: 400 })
+    }
 
-	const { email, username, password } = await req.json();
-	const validation = await userModel.find({ email });
+    const exist = await prisma.user.findUnique({
+        where: {
+            email
+        }
+    });
 
-	if (validation.length === 0) {
-		const newUser = new userModel({
-			id: new Types.ObjectId(),
-			email,
-			username,
-			password,
-		});
-		newUser.save();
+    if(exist) {
+        throw new Error('Email already exists')
+    }
 
-		return NextResponse.json({ communicate: 'Rejestracja udana.' });
-	} else {
-		return NextResponse.json({ communicate: 'Zarejestrowano już konto na podany adres email' });
-	}
-};
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await console.log(hashedPassword)
+
+    const user = await prisma.user.create({
+        data: {
+            name,
+            email,
+            hashedPassword
+        }
+    });
+
+    return NextResponse.json(user)
+}

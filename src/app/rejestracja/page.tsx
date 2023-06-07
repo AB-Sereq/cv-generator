@@ -1,86 +1,58 @@
 'use client'
 
+import { useState } from "react"
+import axios from "axios"
+
 import styles from '@/styles/styles';
 
-import FormInput from '@/components/form/FormInput';
-import Button from '@/components/buttons/Button';
+import FormInput from "@/components/form/FormInput"
+import Button from "@/components/buttons/Button"
+import LoadingButton from "@/components/buttons/LoadingButton";
 
-import Link from 'next/link';
-import { useState } from 'react';
+interface Data{
+	name: string,
+	email: string,
+	password: string
+}
 
-interface UserFormState {
-    email: string;
-    password: string;
-    username: string
-  }
-
-const RegisterPage = () => {
-	
-	const [userForm, setUserForm] = useState<UserFormState>({
+export default function Register() {
+    const [data, setData] = useState<Data>({
+        name: '',
         email: '',
-        password: '',
-		username: ''
-      });
+        password: ''
+    })
 
-	const [registerError, setRegisterError] = useState<boolean>(false)
-	const [errorMessage, setErrorMessage] = useState<string>("")
+	const [isLoading, setIsLoading] = useState<Boolean>(false)
 
-	const addUser = ()=>{
-		try{
-			const response = fetch("http://localhost:3000/api/auth/register", {
-				method: "POST",
-				body: JSON.stringify({
-					"email": userForm.email,
-					"username": userForm.username,
-					"password": userForm.password
-				})
-			})
-			.then((response) => response.json())
-            .then((json) => console.log(json));
-		}catch(error){
-			console.log(error)
-		}
-	}
-
-	const handleClick = ()=>{
-		if(userForm.email === '' || userForm.password === '' || userForm.username === ''){
-			setRegisterError(true)
-			setErrorMessage("*Uzupelnij wszystkie pola!")
-		}else if(userForm.password.length <= 5){
-			setRegisterError(true)
-			setErrorMessage("*Hasło powinno mieć co najmniej 6 znaków!")
-		}else{
-			setRegisterError(false)
-			addUser()
-		}
+    const registerUser = async (e: any) => {
+		setIsLoading(true)
+		console.log(data)
+        e.preventDefault()
+        await axios.post('/api/auth/register', data)
+			.then(() => console.log('succes'))
+			.catch(() => console.log('Something went wrong!'))
+		await setIsLoading(false)
     }
 
-	const handleChange = (e: React.KeyboardEvent<HTMLInputElement>)=>{
-        const name = e.currentTarget.name;
-        const value = e.currentTarget.value
+    return (
+      <>
+        <div className={styles.defaultConatiner}>
+          <div className={styles.justifyContent} style={{width: "30vw", minWidth: "400px"}}>
+		  	<h1 className={styles.h1}>Rejestracja</h1>
+			<div>
+				<form className="space-y-6" onSubmit={registerUser}>
+					<div>
+						<FormInput type='text' label='Nazwa użytkownika' id='name' name='name' onChange={e => setData({ ...data, name: e.target.value })}/>
+						<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
+						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
+					</div>
+					{isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zarejestruj się' action={null} type="submit"/>}
+				</form>
 
-        setUserForm((prev)=>{
-            return {... prev, [name]: value}
-        })
-    }
-
-	return (
-		<div className={styles.defaultConatiner}>
-			<div className={styles.justifyContent} style={{width: "30vw", minWidth: "400px"}}>
-				<h1 className={styles.h1}>Rejestracja</h1>
-				<div className=''>
-					{registerError === true ? <p className='text-danger'>{errorMessage}</p> : ''}
-					<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={handleChange}/>
-					<FormInput label='Nazwa użytkownika' id='username' name='username' onChange={handleChange}/>
-					<FormInput type='password' label='Hasło' id='password' name='password' onChange={handleChange}/>
-				</div>
-				<h2 className="fs-6 mb-5">Masz już konto?  
-                <Link href="./logowanie">Zaloguj się</Link>
-            </h2>
-				<Button label='Zarejestruj się' action={handleClick}/>
 			</div>
-		</div>
-	);
-};
+          </div>
 
-export default RegisterPage;
+        </div>
+      </>
+    )
+  }

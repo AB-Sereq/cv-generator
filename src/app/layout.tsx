@@ -1,5 +1,6 @@
 import '../styles/main.scss';
 import { Work_Sans } from 'next/font/google';
+import Providers from '@/components/other/Providers';
 
 const font = Work_Sans({ subsets: ['latin'] });
 
@@ -10,8 +11,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang='en'>
-			<body className={font.className}>{children}</body>
-		</html>
+	  <html lang="en">
+		<body>
+		  <Providers>
+			{children}
+		  </Providers>
+		</body>
+	  </html>
 	);
-}
+  }

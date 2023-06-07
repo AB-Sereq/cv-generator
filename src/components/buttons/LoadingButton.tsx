@@ -5,7 +5,7 @@ interface ILoadingButton {
 	label: string;
 }
 
-const Button: FC<ILoadingButton> = ({ label }) => {
+const LoadingButton: FC<ILoadingButton> = ({ label }) => {
 	return (
 		<button className={styles.button} type='button' disabled>
 			<span className='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
@@ -14,4 +14,4 @@ const Button: FC<ILoadingButton> = ({ label }) => {
 	);
 };
 
-export default Button;
+export default LoadingButton;
