@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from "next/navigation"
 import axios from "axios"
 
 import styles from '@/styles/styles';
@@ -16,23 +18,51 @@ interface Data{
 }
 
 export default function Register() {
+	const session = useSession()
+	const router = useRouter()
+
+    const [isError, setIsError] = useState<Boolean>(false)
+	const [isLoading, setIsLoading] = useState<Boolean>(false)
     const [data, setData] = useState<Data>({
         name: '',
         email: '',
         password: ''
     })
 
-	const [isLoading, setIsLoading] = useState<Boolean>(false)
+	useEffect(() => {
+		if (session?.status === 'authenticated') {
+		   router.push('/') 
+		}
+	})
+
+	const loginUser = async () =>{
+		signIn('credentials',
+                 {...data, redirect: false
+                })
+                .then((callback) => {
+                    if (callback?.error) {
+                        console.log(callback);
+						setIsError(true)
+                    }
+
+                    if(callback?.ok && !callback?.error) {
+                        console.log(callback);
+                    }
+                } )
+	}
 
     const registerUser = async (e: any) => {
+		setIsError(false)
 		setIsLoading(true)
 		console.log(data)
         e.preventDefault()
         await axios.post('/api/auth/register', data)
-			.then(() => console.log('succes'))
-			.catch(() => console.log('Something went wrong!'))
+			.then(() => {loginUser()})
+			.catch(() => setIsError(true))
 		await setIsLoading(false)
     }
+
+	console.log(session?.status === 'authenticated')
 
     return (
       <>
@@ -45,6 +75,8 @@ export default function Register() {
 						<FormInput type='text' label='Nazwa użytkownika' id='name' name='name' onChange={e => setData({ ...data, name: e.target.value })}/>
 						<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
 						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
+						<h2 className="fs-6">Masz już konto? <a href="./logowanie" className="text-primary">Zaloguj się</a></h2>
+						{isError ? <h3 className="text-danger fs-6">Coś poszło nie tak!</h3> : ""}
 					</div>
 					{isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zarejestruj się' action={null} type="submit"/>}
 				</form>

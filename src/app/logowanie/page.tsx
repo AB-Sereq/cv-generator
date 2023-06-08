@@ -19,6 +19,7 @@ export default function Login() {
     const session = useSession()
     const router = useRouter()
 	const [isLoading, setIsLoading] = useState<Boolean>(false)
+    const [isError, setIsError] = useState<Boolean>(false)
     const [data, setData] = useState<Data>({
             email: '',
             password: ''
@@ -32,6 +33,7 @@ export default function Login() {
             })
 
             const loginUser = async (e: any) => {
+                setIsError(false)
 				setIsLoading(true);
                 e.preventDefault()
                 signIn('credentials',
@@ -40,6 +42,7 @@ export default function Login() {
                 .then((callback) => {
                     if (callback?.error) {
                         console.log(callback);
+                        setIsError(true)
 						setIsLoading(false);
                     }
 
@@ -60,7 +63,8 @@ export default function Login() {
               		<div>
 			  			<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
 						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
-
+                        <h2 className="fs-6">Nie masz konta? <a href="./rejestracja" className="text-primary">Zarejestruj się</a></h2>
+                        {isError ? <h3 className="text-danger fs-6">Nieprawidłowy adres mailowy lub hasło</h3> : ""}
               		</div>
 					  {isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zaloguj się' action={null} type="submit"/>}
             </form>
