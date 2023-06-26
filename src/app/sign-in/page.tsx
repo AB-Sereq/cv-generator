@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from "next/navigation"
 
-import FormInput from "@/components/form/FormInput"
-import Button from "@/components/buttons/Button"
-import LoadingButton from "@/components/buttons/LoadingButton"
+import FormInput from "@/components/UI/form/FormInput"
+import Button from "@/components/UI/buttons/Button"
+import LoadingButton from "@/components/UI/buttons/LoadingButton"
 
 import styles from '@/styles/styles';
 
@@ -19,7 +19,7 @@ export default function Login() {
     const session = useSession()
     const router = useRouter()
 	const [isLoading, setIsLoading] = useState<Boolean>(false)
-    const [isError, setIsError] = useState<Boolean>(false)
+    const [error, setError] = useState<String>('')
     const [data, setData] = useState<Data>({
             email: '',
             password: ''
@@ -33,7 +33,7 @@ export default function Login() {
             })
 
             const loginUser = async (e: any) => {
-                setIsError(false)
+                setError("")
 				setIsLoading(true);
                 e.preventDefault()
                 signIn('credentials',
@@ -42,7 +42,7 @@ export default function Login() {
                 .then((callback) => {
                     if (callback?.error) {
                         console.log(callback);
-                        setIsError(true)
+                        setError("Niepoprawne dane logownaia")
 						setIsLoading(false);
                     }
 
@@ -56,15 +56,15 @@ export default function Login() {
     return (
       <>
         <div className={styles.defaultConatiner}>
-          <div className={styles.justifyContent} style={{width: "30vw", minWidth: "400px"}}>
+          <div className={styles.justifyContent} style={{width: "30vw", minWidth: "300px"}}>
 		  	<h1 className={styles.h1}>Logowanie</h1>
 			<div>
             	<form onSubmit={loginUser}>
               		<div>
 			  			<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
 						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
-                        <h2 className="fs-6">Nie masz konta? <a href="./rejestracja" className="text-primary">Zarejestruj się</a></h2>
-                        {isError ? <h3 className="text-danger fs-6">Nieprawidłowy adres mailowy lub hasło</h3> : ""}
+                        <h2 className="fs-6">Nie masz konta? <a href="./sign-up" className="text-primary">Zarejestruj się</a></h2>
+                        <h3 className="text-danger fs-6">{error}</h3>
               		</div>
 					  {isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zaloguj się' action={null} type="submit"/>}
             </form>

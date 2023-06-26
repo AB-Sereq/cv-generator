@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent } from 'react';
+import { FC } from 'react';
 
 interface IFormInput {
 	type?: string;
@@ -9,7 +9,7 @@ interface IFormInput {
 	// onKeyDown: (e: any) => void;
 }
 
-const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name}) => {
+const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name, }) => {
 	return (
 		<>
 			<div className='form-floating mb-3'>
@@ -21,7 +21,6 @@ const FormInput: FC<IFormInput> = ({ type, label, id, onChange, name}) => {
 					onChange={onChange}
 					name={name}
 					// onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onKeyDown(e)}
-					required
 				/>
 				<label htmlFor={id}>{label}</label>
 			</div>
