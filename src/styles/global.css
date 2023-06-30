@@ -1,0 +1,40 @@
+/* ui elements */
+.header{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.roundBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: white;
+  background-color: #0d6efd;
+  border: 0;
+  opacity: .75;
+  transition: transform .3s;
+}
+
+.roundBtn:hover{
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* layout */
+
+.container{
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; 
+}
+
+.justifyContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

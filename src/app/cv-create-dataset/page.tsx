@@ -1,6 +1,6 @@
 "use client"
 
-import styles from '@/styles/styles';
+import styles from "@/styles/cv-create-dataset/page.module.css"
 
 import FormInput from "@/components/UI/form/FormInput"
 import Button from "@/components/UI/buttons/Button"
@@ -109,18 +109,18 @@ const CvDefaultData = () => {
 
 
   return (
-        <div className={styles.defaultConatiner}>
-            <div className={styles.justifyContent} style={{width: "80vw", minWidth: "400px"}}>
-                <h1 className={styles.h1}>Twoj zestaw danych</h1>
+        <div className="container">
+            <div className="justifyContent" style={{width: "80vw", minWidth: "400px"}}>
+                <h1 className='header'>Twoj zestaw danych</h1>
                 <p>Te dane będą wklejane podczas tworzenia nowego CV. Tą opcję możesz w każdej chwili wyłączyć.</p>
                 <div>
                     <form onSubmit={addDefaultCVData}>
                         <FormInput type='text' label='Nazwa zestawu danych' id='dataSetName' name='dataSetName' onChange={(e) => {
                             setData({ ...data, dataSetName: e.target.value });
                             }}/>
-                        <div className='d-flex flex-column flex-lg-row container-fluid' style={{maxHeight: "600px"}}>
+                        <div className={styles.contentWrapper}>
 
-                                <div className='d-flex flex-column w-50 w-lg-100 mt-3 overflow-auto w-lg-100' style={{maxHeight: "550px", width: "100%"}}>
+                                <div className={styles.leftSideContainer}>
                                     <FormInput type='file' label='Zdjęcie' id='photo' name='photo' onChange={e => setData({ ...data, photo: e.target.value })}/>
                                     <FormInput type='text' label='Imię' id='name' name='name' onChange={e => setData({ ...data, name: e.target.value })}/>
                                     <FormInput type='text' label='Nazwisko' id='surname' name='surname' onChange={e => setData({ ...data, surname: e.target.value })}/>
@@ -137,7 +137,7 @@ const CvDefaultData = () => {
 
                             <DropdownElementsWrapper displayDropdown={displayDropdown}/>
                         </div>
-                        <div className='mt-5'>
+                        <div className={styles.buttonContainer}>
                         {isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zapisz' action={null} type="submit"/>}
                         </div>
                 </form>

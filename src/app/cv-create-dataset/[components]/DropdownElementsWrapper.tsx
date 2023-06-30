@@ -2,6 +2,8 @@ import { useState} from "react"
 
 import DropdownElement from "@/app/cv-create-dataset/[components]/DropdownElement"
 
+import styles from "@/styles/cv-create-dataset/dropdownElementsWrapper.module.css"
+
 import { FC } from 'react';
 
 interface props{
@@ -16,7 +18,7 @@ const DropdownElementsWrapper: FC<props> = ({displayDropdown}) => {
   return (
     <>
     {displayDropdown ? 
-    <div className='d-flex flex-column w-50 mt-3 overflow-auto' style={{maxHeight: "550px"}}>
+    <div className={styles.contentWrapper}>
 
         <DropdownElement name="Doświadczenie zawodowe" id="experience" 
           inputs={[

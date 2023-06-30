@@ -1,0 +1,8 @@
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 16px;
+    overflow: auto;
+    max-height: 550px;
+}

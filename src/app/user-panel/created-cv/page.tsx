@@ -2,7 +2,7 @@ import React from 'react'
 
 const StworzoneCV = () => {
   return (
-    <div>page</div>
+    <div>wefge</div>
   )
 }
 

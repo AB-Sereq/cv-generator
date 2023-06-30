@@ -10,6 +10,8 @@ import ReadyData from "@/app/cv-create-dataset/[components]/ReadyData";
 
 import { FaCheck, FaTrashAlt } from "react-icons/fa";
 
+import styles from "@/styles/cv-create-dataset/dropdownElement.module.css";
+
 
 
 
@@ -81,28 +83,28 @@ const DropdownElement: FC<ElementProps> = ({name, id, plusBtnClickFunc, currentl
     return (
 		<>
 		{currentlyUnrolledElement === "" || currentlyUnrolledElement === name ?
-			<div className="w-100 border h-100" style={{marginBottom: "14px", padding: "4.8px"}}>
-				<div className="w-100 d-flex align-items-center justify-content-between" style={{minHeight: "48px"}}>
-					<h2 className="fs-6 fw-normal">{name}</h2>
+			<div className={styles.contentWrapper}>
+				<div className={styles.content}>
+					<h2 className={styles.label}>{name}</h2>
 					<div>
 
 						{currentlyUnrolledElement === name ? 
-						<div className="d-flex justify-content-between" style={{width: "80px"}}>
-							<button onClick={stateReset} className="bg-warning d-flex align-items-center justify-content-center rounded-circle border-0" style={{width: "34px", height: "34px"}}>
+						<div className={styles.unrolledElementControlsWrapper}>
+							<button onClick={stateReset} className={`roundBtn ${styles.trashBtn}`}>
 								<FaTrashAlt/>
 							</button>
-							<button onClick={saveData} className="bg-primary text-white d-flex align-items-center justify-content-center rounded-circle border-0" style={{width: "34px", height: "34px"}}>
+							<button onClick={saveData} className="roundBtn">
 									<FaCheck/>
 							</button>
 
 						</div>
 						: 
-						<button onClick={updateState} className="bg-primary text-white d-flex align-items-center justify-content-center rounded-circle border-0" style={{width: "34px", height: "34px"}}>+</button>
+						<button onClick={updateState} className="roundBtn">+</button>
 						}
 					</div>
 				</div>
 				{currentlyUnrolledElement === name ? 
-				<div className="mt-4 w-100 overflow-auto">
+				<div className={styles.inputsContainer}>
 					{inputs.map((input)=>{
 						return <FormInput key={input.label} type={input.type} label={input.label} id={input.label} name={input.label} onChange={(e) => {
 							updateValues(e, input.name) 		

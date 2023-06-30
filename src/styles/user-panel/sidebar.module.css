@@ -1,0 +1,41 @@
+.contentWrapper{
+    min-width: 300px;
+    max-width: 450px;
+    height: 93vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header{
+    color: white;
+    position: absolute;
+    top: 10vh;
+}
+
+.linksContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.link{
+    width: 100%;
+    padding: 8% 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid white;
+    transition: background-color .5s;
+    display: flex;
+    justify-content: center;
+}
+
+.link:hover{
+    color: white;
+    background-color: #0b65ec;
+    font-weight: bold;
+}

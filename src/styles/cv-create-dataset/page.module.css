@@ -1,0 +1,19 @@
+.contentWrapper{
+    display: flex;
+    flex-direction: row;
+    max-height: 600px;
+    width: 100%;
+}
+
+.leftSideContainer{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 18px;
+    overflow: auto;
+    max-height: 550px;
+}
+
+.buttonContainer{
+    margin-top: 48px;
+}

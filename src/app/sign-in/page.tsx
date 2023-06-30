@@ -8,7 +8,7 @@ import FormInput from "@/components/UI/form/FormInput"
 import Button from "@/components/UI/buttons/Button"
 import LoadingButton from "@/components/UI/buttons/LoadingButton"
 
-import styles from '@/styles/styles';
+import styles from "@/styles/auth/auth.module.css"
 
 interface Data {
 	email: string,
@@ -55,16 +55,16 @@ export default function Login() {
 			console.log(isLoading)
     return (
       <>
-        <div className={styles.defaultConatiner}>
-          <div className={styles.justifyContent} style={{width: "30vw", minWidth: "300px"}}>
-		  	<h1 className={styles.h1}>Logowanie</h1>
+        <div className="container">
+          <div className="justifyContent" style={{width: "30vw", minWidth: "300px"}}>
+		  	<h1 className="header">Logowanie</h1>
 			<div>
             	<form onSubmit={loginUser}>
               		<div>
 			  			<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
 						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
-                        <h2 className="fs-6">Nie masz konta? <a href="./sign-up" className="text-primary">Zarejestruj się</a></h2>
-                        <h3 className="text-danger fs-6">{error}</h3>
+                        <h2 className={styles.text}>Nie masz konta? <a href="./sign-up" className="text-primary">Zarejestruj się</a></h2>
+                        <h3 className={`text-danger ${styles.text}`}>{error}</h3>
               		</div>
 					  {isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zaloguj się' action={null} type="submit"/>}
             </form>

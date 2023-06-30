@@ -96,11 +96,3 @@ export async function POST(request: Request, response: Response) {
   }
 
 }
-
-export async function GET(request: Request, response: Response) {
-  const users = await prisma.skill.findMany({
-
-  })
-
-  return NextResponse.json(users)
-}

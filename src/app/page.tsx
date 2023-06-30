@@ -2,15 +2,14 @@ import { getServerSession } from 'next-auth'
 import { GET } from './api/auth/[...nextauth]/route'
 import { LogoutButton } from './auth'
 import { User } from './user'
-import Link from 'next/link'
+import Navbar from '@/components/UI/Navbar'
 
 export default async function Home() {
   const session = await getServerSession(GET)
 
   return (
     <main>
-      <Link href={"/logowanie"}>Logowanie</Link>
-      <Link href={"/rejestracja"}>Rejestracja</Link>
+      <Navbar/>
       <LogoutButton />  
       <h2>Server Session</h2>
       <pre>{JSON.stringify(session)}</pre>

@@ -1,0 +1,29 @@
+.contentWrapper{
+    width: 60%;
+    padding: 18px;
+    margin: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    min-height: 60px;
+    min-width: 280px;
+    background-color: #f0f0f0;
+}
+
+.textWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+}
+
+.label{
+    font-size: 16px;
+    margin: 0;
+}
+
+.paragraph{
+    font-family: 12px;
+    margin: 0;
+}

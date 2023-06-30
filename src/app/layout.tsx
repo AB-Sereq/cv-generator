@@ -1,4 +1,5 @@
 import '../styles/main.scss';
+import "../styles/global.css"
 import { Work_Sans } from 'next/font/google';
 import Providers from '@/components/other/Providers';
 

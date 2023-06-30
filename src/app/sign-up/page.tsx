@@ -5,7 +5,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from "next/navigation"
 import axios from "axios"
 
-import styles from '@/styles/styles';
+import styles from "@/styles/auth/auth.module.css"
 
 import FormInput from "@/components/UI/form/FormInput"
 import Button from "@/components/UI/buttons/Button"
@@ -66,17 +66,17 @@ export default function Register() {
 
     return (
       <>
-        <div className={styles.defaultConatiner}>
-          <div className={styles.justifyContent} style={{width: "30vw", minWidth: "300px"}}>
-		  	<h1 className={styles.h1}>Rejestracja</h1>
+        <div className="container">
+          <div className="justifyContent" style={{width: "30vw", minWidth: "300px"}}>
+		  	<h1 className="header">Rejestracja</h1>
 			<div>
-				<form className="space-y-6" onSubmit={registerUser}>
+				<form onSubmit={registerUser}>
 					<div>
 						<FormInput type='text' label='Nazwa użytkownika' id='name' name='name' onChange={e => setData({ ...data, name: e.target.value })}/>
 						<FormInput type='email' label='Adres mailowy' id='email' name='email' onChange={e => setData({ ...data, email: e.target.value })}/>
 						<FormInput type='password' label='Hasło' id='password' name='password' onChange={e => setData({ ...data, password: e.target.value })}/>
-						<h2 className="fs-6">Masz już konto? <a href="./sign-in" className="text-primary">Zaloguj się</a></h2>
-						{isError ? <h3 className="text-danger fs-6">Coś poszło nie tak!</h3> : ""}
+						<h2 className={styles.text}>Masz już konto? <a href="./sign-in" className="text-primary">Zaloguj się</a></h2>
+						{isError ? <h3 className={`text-danger ${styles.text}`}>Coś poszło nie tak!</h3> : ""}
 					</div>
 					{isLoading ? <LoadingButton label="Ładowanie..."/> : <Button label='Zarejestruj się' action={null} type="submit"/>}
 				</form>
