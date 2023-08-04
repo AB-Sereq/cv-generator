@@ -1,4 +1,4 @@
-import {UserDataSetContext } from '@/context/UserDataSet';
+import { useUserDataSetContext } from "@/context/UserDataSet";
 import styles from "@/styles/cv-create-dataset/readyData.module.css"
 
 import { FC } from 'react';
@@ -12,7 +12,7 @@ interface Props{
 
 const ReadyData: FC<Props> = ({ name, label, id}) => {
 
-  const {userDataSet, setUserDataSet} = useContext(UserDataSetContext)
+	const { userDataSet, setUserDataSet} = useUserDataSetContext();
 
   const handleClick = (e: any) =>{
     e.preventDefault()

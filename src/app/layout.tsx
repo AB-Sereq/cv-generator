@@ -1,9 +1,12 @@
 import '../styles/main.scss';
 import "../styles/global.css"
-import { Work_Sans } from 'next/font/google';
+import { Roboto } from 'next/font/google'
 import Providers from '@/components/other/Providers';
 
-const font = Work_Sans({ subsets: ['latin'] });
+const font = Roboto({
+	weight: ['400', '700'],
+	subsets: ['latin'],
+  })
 
 export const metadata = {
 	title: 'CV Generator',
@@ -13,10 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 	  <html lang="en">
-		<body>
-		  <Providers>
-			{children}
-		  </Providers>
+		<body className={font.className}>
+				<Providers>
+					{children}
+				</Providers>
 		</body>
 	  </html>
 	);

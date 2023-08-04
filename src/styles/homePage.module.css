@@ -1,0 +1,320 @@
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome{
+    position: relative;
+    width: 80vw;
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leftSection{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcomeHeader{
+    font-size: 60px;
+}
+
+.welcomeSpan{
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.welcomeSpan::before{
+    opacity: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    background-color: #0D6EFD;
+    width: 110%;
+    position: absolute;
+    border-radius: 20px;
+    top: -5%;
+    left: -5%;
+    z-index: -999;
+    animation-name: appearBefore;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    
+}
+
+.links{
+    margin-top: 7vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.CVLink{
+    color: white;
+    width: 160px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #0D6EFD;
+    text-decoration: none;
+}
+
+.CVLink:hover{
+    color: white;
+    background-color: #0c62e4;
+}
+
+.registerLink{
+    margin-left: 30px;
+    font-weight: 700;
+    color: #0D6EFD
+}
+
+.sectionWrapper{
+    margin-top: 20vh;
+    width: 80vw;
+}
+
+.sectionHeader{
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 40px;
+    color: #0D6EFD;
+    font-weight: 700;
+}
+
+.sectionHeader::before{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 20px;
+    background-color: #0D6EFD;
+    width: 20px;
+    position: absolute;
+    border-radius: 5px;
+    left: -40px;
+    z-index: -999;
+}
+
+.cvImg{
+    position: relative;
+    display: flex;
+    align-items: center;
+    right: 90px;
+}
+
+.main{
+    width: 350px;
+    height: 440px;
+    border: 1px solid gray;
+}
+
+.back{
+    width: 250px;
+    height: 370px;
+    border: 1px solid rgba(128, 128, 128, 0.425);
+    position: relative;
+}
+
+.back:first-child{
+    left: 90px;
+}
+.back:last-child{
+    right: 90px;
+}
+
+.content{
+    margin-top: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shapesContainer{
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    display: flex;
+}
+
+.shapeAndLine{
+    width: 20vw;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.shape{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    align-self: flex-start;
+    margin: 20px 0;
+}
+
+
+.shapeHeader{
+    text-align: center;
+    width: 200px;
+    position: absolute;
+    font-size: 16px;
+    color: #0D6EFD;
+    font-weight: 700;
+}
+
+.boxesWrapper{
+    margin: 4vh 0;
+    border: 4px solid #0D6EFD;
+    border-bottom: 0;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box{
+    padding: 0 5%;
+    text-align: center;
+    color: #0D6EFD;
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid #0D6EFD;
+    transition: width 1s;
+}
+
+.box:first-child{
+    border-right: 4px solid #0D6EFD;
+}
+
+.boxHeader{
+    font-weight: 700;
+    font-size: 22px;
+    max-width: 300px;
+}
+
+.box:hover{
+    width: 70%;
+    background-color: #0D6EFD;
+    color: white;
+}
+
+.boxText{
+    display: none;
+    max-width: 300px;
+}
+
+.box:hover > .boxText {
+    display: block;
+}
+
+
+@keyframes appearBefore {
+    from {
+        transform:  scaleX(0);
+        opacity: 1;
+    }
+    to {
+        transform:  scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes boxHover {
+    from {
+        transform:  scaleX(0);
+        opacity: 1;
+    }
+    to {
+        transform:  scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes boxAnimation {
+    from {
+        display: block;
+    }
+    to {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .welcomeHeader{
+        font-size: 45px;
+    }
+
+    .boxesWrapper{
+        border: 0;
+    }
+
+    .row{
+        flex-direction: column;
+    }
+    .box{
+        height: 150px;
+        width: 100%;
+    }
+    .box:hover{
+        width: 100%;
+    }
+
+    .box:first-child{
+        border-right: 0;
+    }
+
+    .boxHeader{
+        font-size: 18px;
+    }
+
+    .boxText{
+        display: block;
+        font-size: 12px;
+        color: #0D6EFD;
+    }
+
+    .box:hover > .boxText {
+        color: white;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .rightSection{
+        display: none;
+    }
+    .leftSection{
+        width: 90vw;
+    }
+    .welcomeHeader{
+        font-size: 55px;
+        max-width: 470px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+
+    .welcomeHeader{
+        font-size: 45px;
+        max-width: 470px;
+    }
+}

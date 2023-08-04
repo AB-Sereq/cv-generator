@@ -1,0 +1,70 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    width: 800px;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+}
+
+.select{
+    cursor: pointer;
+    border: 2px solid #0D6EFD;
+    padding: 4px;
+    margin-right: 5px;
+
+}
+
+.colorInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.colorInput::-webkit-color-swatch {
+    border: none;
+}
+
+.label{
+    font-weight: 600;
+    margin: 5px;
+}
+
+/* font choice */
+
+.segoeUI{
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.helvetica{
+    font-family: Helvetica, sans-serif;
+}
+
+.arial{
+    font-family: Arial, sans-serif;
+}
+
+.couriernew{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.timesnewroman{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.georgia{
+    font-family: Georgia, Times, serif;
+}
+
+.roboto{
+    font-family: Roboto, sans-serif;
+}

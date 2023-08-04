@@ -1,8 +1,8 @@
 import { useState} from "react"
 
-import DropdownElement from "@/app/cv-create-dataset/[components]/DropdownElement"
+import DropdownElement from "./DropdownElement";
 
-import styles from "@/styles/cv-create-dataset/dropdownElementsWrapper.module.css"
+import styles from "@/styles/components/resumeDataForm/dropdownElementWrapper.module.css"
 
 import { FC } from 'react';
 

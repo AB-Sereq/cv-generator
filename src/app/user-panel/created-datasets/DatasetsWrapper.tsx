@@ -1,5 +1,5 @@
 "use client"
-import FormInput from "@/components/UI/form/FormInput";
+import FormInput from "@/components/UI/form/ResumeData/FormInput";
 
 import { useState } from "react"
 

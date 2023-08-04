@@ -7,7 +7,7 @@ import axios from "axios"
 
 import styles from "@/styles/auth/auth.module.css"
 
-import FormInput from "@/components/UI/form/FormInput"
+import FormInput from "../../components/UI/form/ResumeData/FormInput"
 import Button from "@/components/UI/buttons/Button"
 import LoadingButton from "@/components/UI/buttons/LoadingButton";
 

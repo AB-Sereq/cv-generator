@@ -1,0 +1,28 @@
+.bar{
+    width: 100vw;
+    border-top: 2px dashed #0D6EFD;
+    padding: 2vh 8vw;
+    display: grid;
+    grid-template-columns: 3.5fr 1fr;
+}
+
+.button{
+    background-color: transparent;
+    color: #0D6EFD;
+    width: 200px;
+    height: 40px;
+    font-weight: 600;
+    text-decoration: underline;
+    border: 0;
+}
+
+.button:hover{
+    color: #1757b8;
+    background-color: transparent;
+}
+
+
+.rightButton{
+    min-width: 200px;
+}
+

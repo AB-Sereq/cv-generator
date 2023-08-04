@@ -1,0 +1,41 @@
+.arrowBtn{
+    margin: 20px;
+    border-radius: 100px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    background-color: transparent;
+}
+
+.arrowBtn:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.arrowBtnRight{
+    transform: scaleX(-1);
+}
+
+
+.patternBtn{
+    background-color: transparent;
+    margin: 30px;
+    border: none;
+    transition: transform .3s ease;
+    padding: 0;
+}
+
+.pattern{
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 20vw;
+    height: auto;
+    min-width: 280px;
+    transition: transform .3s ease;
+}
+
+.patternBtn:hover{
+    transform: scale(1.05);
+}
+
+.selectedPattern{
+    border: 2px solid #0D6EFD;
+}

@@ -1,0 +1,110 @@
+/* General styles */
+
+.container{
+    width: 350px;
+    height: 495px;
+    border: 1px solid gray;
+}
+
+.roundPhoto{
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    border: 2px solid black;
+}
+
+.topSection{
+    align-items: center;
+    padding: 15px;
+    border-bottom: 2px dashed;
+    display: flex;
+}
+
+.topSectionInfo{
+    width: 75%;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Pattern 1 */
+
+.nameP1{
+    font-weight: 600;
+}
+
+.contactP1{
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contactElementP1{
+    margin: 0;
+    font-size: 10px;
+}
+
+.sectionElementP1{
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    position: relative;
+}
+
+.sectionElementP1::before{
+    content: "";
+    height: 100%;
+    width: 3px;
+    display: block;
+    background-color: gray;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+}
+
+.sectionHeaderP1{
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.sectionHeaderP1::before{
+    content: "";
+    height: 20px;
+    width: 20px;
+    display: block;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+    border-radius: 50px;
+    left: 2.6%;
+    border: 3px solid white;
+}
+
+.sectionHeaderP1::first-letter{
+    text-transform: uppercase;
+}
+
+.infoP1{
+    padding-left: 3%;
+}
+
+.additionalInfoP1{
+    color: gray;
+}
+
+.infoBoldP1{
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.infoRegularP1{
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.additionalInfoP1{
+    margin-bottom: 6px;
+}

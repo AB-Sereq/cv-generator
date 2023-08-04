@@ -4,9 +4,11 @@
     display: flex;
     align-items: center;
     padding: 0 10vw 0 10vw;
+    min-height: 70px;
 }
 
 .logo{
+    text-transform: uppercase;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -15,6 +17,21 @@
 
 .logo:hover{
     color: white;
+}
+
+.span{
+    position: relative;
+}
+
+.span::after{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 3px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .linksContainer{
@@ -43,8 +60,7 @@
     transition: transform .3s ease;
     transform-origin: bottom right;
     width: 50%;
-    height: 2px;
-    transform:  translateX(-101%);
+    transform:  translateX(-105%);
 }
 
 .link:hover{
@@ -62,4 +78,26 @@
     justify-content: space-between;
     position: absolute;
     right: 10vw;
+}
+
+.burgerMenu{
+    display: none;
+    padding: 10px;
+    background-color: transparent;
+    border: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .linksContainer{
+        display: none;
+    }
+    .userControls{
+        display: none;
+    }
+    .burgerMenu{
+        display: block;
+    }
+    .navbar{
+        justify-content: space-between;
+    }
 }

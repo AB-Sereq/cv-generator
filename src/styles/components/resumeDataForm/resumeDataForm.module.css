@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+
+.leftSide{
+    width: 50%;
+    padding: 4px;
+}
+
+.rightSide{
+    width: 50%;
+    padding: 4px;
+}

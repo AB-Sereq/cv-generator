@@ -1,0 +1,19 @@
+/* when step 1 */
+
+.container{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 68vh;
+
+}
+
+.choosePattern{
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

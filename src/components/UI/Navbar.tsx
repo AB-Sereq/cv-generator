@@ -7,14 +7,15 @@ import Link from 'next/link'
 import { LogoutButton } from "@/app/auth"
 import { useSession } from 'next-auth/react'
 
+import { BiMenu } from "react-icons/bi";
+
 const Navbar = () => {
 
   const session = useSession()
-
   console.log(session.status)
   return (
     <nav className={`bg-primary ${styles.navbar}`}>
-      <Link href={"/"} className={styles.logo}>CV Generator</Link>
+      <Link href={"/"} className={styles.logo}>resu<span className={styles.span}>me</span></Link>
       <div className={styles.linksContainer}>
         <Link className={styles.link} href={"/cv-creator"}>Stwórz CV</Link>
         <Link className={styles.link} href={"/cv-create-dataset"}>Stwórz zestaw danych</Link>
@@ -30,6 +31,7 @@ const Navbar = () => {
           <Link className={styles.link} href="/sign-up">Rejestracja</Link>
         </div>
       }
+      <button className={styles.burgerMenu}><BiMenu size={30} color="white"/></button>
     </nav>
   )
 }

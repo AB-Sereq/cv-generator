@@ -1,11 +1,38 @@
-"use client";
+'use client';
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const UserDataSetContext = createContext({})
+interface IData{
 
-export const UserDataSetContextProvider = ({ children }:any ) =>{
-    const [userDataSet, setUserDataSet] = useState({
+    photo: string,
+    name: string,
+    surname: string,
+    phoneNumber: string,
+    email: string,
+    websiteURL: string,
+  
+    experience: [],
+    certificates: [],
+    education: [],
+    courses: [],
+    skills: [],
+    achievements: [],
+    hobbys: [],
+    characteristic: [],
+    additionalActivity: []
+  }
+
+const UserDataSetContext = createContext({})
+
+export const UserDataSetContextProvider = ({ children }: any) => {
+    const [userDataSet, setUserDataSet] = useState<IData>({
+        photo: '',
+        name: '',
+        surname: "",
+        phoneNumber: "",
+        email: "",
+        websiteURL: "",
+    
         experience: [],
         certificates: [],
         education: [],
@@ -15,14 +42,13 @@ export const UserDataSetContextProvider = ({ children }:any ) =>{
         hobbys: [],
         characteristic: [],
         additionalActivity: []
-    })
-
-    const value = {
-        userDataSet,
-        setUserDataSet
-    }
+    });
 
     return (
-        <UserDataSetContext.Provider value={value}>{children}</UserDataSetContext.Provider>
+        <UserDataSetContext.Provider value={{ userDataSet, setUserDataSet }}>
+            {children}
+        </UserDataSetContext.Provider>
     )
-}
+};
+
+export const useUserDataSetContext = () => useContext(UserDataSetContext);
