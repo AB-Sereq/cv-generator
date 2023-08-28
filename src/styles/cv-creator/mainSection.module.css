@@ -4,9 +4,10 @@
     width: 80vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 68vh;
+    position: relative;
 
 }
 
@@ -17,3 +18,10 @@
     justify-content: center;
 }
 
+.button{
+    text-decoration: underline;
+    font-weight: 700;
+    border: 0;
+    background-color: transparent;
+    color: #0D6EFD;
+}

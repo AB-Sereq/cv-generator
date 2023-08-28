@@ -1,3 +1,12 @@
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
 .arrowBtn{
     margin: 20px;
     border-radius: 100px;
@@ -38,4 +47,55 @@
 
 .selectedPattern{
     border: 2px solid #0D6EFD;
+}
+
+.mobileBtnArrow{
+    display: none;
+}
+
+.patternsContainer{
+    display: flex;
+
+}
+
+
+
+.mobileBtnArrow{
+    border: 0;
+    background-color: #0D6EFD;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    color: white;
+}
+
+
+.mobileBtnArrowLeft{
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .mobileBtnArrow{
+        display: block;
+    }
+
+    .patternsContainer{
+        justify-content: center;
+        width: 80vw;
+        overflow: hidden;
+    }
+
+    .pattern{
+        width: 60vw;
+        min-width: 100px;
+    }
+
+    .patternBtn{
+        display: none;
+    }
+
+    .selectedPattern{
+        display: block;
+    }
 }

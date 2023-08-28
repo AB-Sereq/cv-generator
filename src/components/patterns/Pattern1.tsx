@@ -1,117 +1,149 @@
 import styles from "@/styles/components/patterns.module.css"
-
 import { FC } from "react"
 
 interface IData {
   data: any,
-  personalization: {color: string, font: string, fontSize: string}
+  personalization: {color: string, fontFamily: string, fontSize: number}
 }
 
-interface IDataElement {
-  data: any
+interface IElementData {
+  values: any,
+  personalization: any
 }
 
-interface ITime {
-  dateStart: string;
-  dataEnd: string;
+
+const Element: FC <IElementData> = ({values, personalization}) => {
+
+  console.log(values)
+  return (
+    <div>
+
+      {values.name === "experience" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.position}</h2>
+          {values.inputsValues.startDate !== "" ? <div className={styles.date}>
+            <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.startDate}-</h2>
+            {values.inputsValues.endDate !== "" ? <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.endDate}</h2> : <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>Now</h2>}
+          </div> : ""}
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2}}>{values.inputsValues.companyName}, <span className={styles.span}>{values.inputsValues.city}</span></h2>
+        </div> : ""}
+
+        {values.name === "education" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.institutionName}</h2>
+          {values.inputsValues.startDate !== "" ? <div className={styles.date}>
+            <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.startDate}-</h2>
+            {values.inputsValues.endDate !== "" ? <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.endDate}</h2> : <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>Now</h2>}
+          </div> : ""}
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2}}>{values.inputsValues.level}, <span className={styles.span}>{values.inputsValues.city}</span></h2>
+        </div> : ""}
+
+        {values.name === "skills" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.skillName}</h2>
+        </div> : ""}
+
+        {values.name === "certificates" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.certificateName}</h2>
+          {values.inputsValues.endDate !== "" ?
+            <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>Finished: {values.inputsValues.endDate}</h2>
+
+          : ""}
+        </div> : ""}
+
+        {values.name === "courses" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.courseName}</h2>
+          {values.inputsValues.endDate !== "" ?
+            <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>Finished: {values.inputsValues.endDate}</h2>
+
+          : ""}
+        </div> : ""}
+
+        {values.name === "achievements" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.achievementName}</h2>
+        </div> : ""}
+
+        {values.name === "characteristic" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.characteristicName}</h2>
+        </div> : ""}
+
+        {values.name === "hobbys" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.hobbyName}</h2>
+        </div> : ""}
+
+        {values.name === "additionalActivity" ? 
+        <div>
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 1.6}}>{values.inputsValues.activityName}</h2>
+          {values.inputsValues.startDate !== "" ? <div className={styles.date}>
+            <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.startDate}-</h2>
+            {values.inputsValues.endDate !== "" ? <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>{values.inputsValues.endDate}</h2> : <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2, color: personalization.color}}>Now</h2>}
+          </div> : ""}
+          <h2 className={styles.header} style={{fontSize: personalization.fontSize / 2.2}}>{values.inputsValues.city}</h2>
+        </div> : ""}
+
+      <p style={{fontSize: personalization.fontSize / 2.2, marginBottom:"2%"}}>{values.inputsValues.additionalInfo}</p>
+    </div>
+  )
 }
+
 
 const Pattern1: FC <IData> = ({data, personalization}) => {
 
-  const fontSizePx = ()=>{
-    if(personalization.fontSize === 'S'){
-      return 10
-    }else if(personalization.fontSize === 'M'){
-      return 14
-    }else if(personalization.fontSize === 'L'){
-      return 18
-    }
-  }
+  const infos: any[] = [data.phoneNumber, data.email, data.websiteURL]
+  const mainSectionData: any[] = [data.experience, data.education, data.skills, data.certificates, data.courses, data.achievements, data.characteristic, data.hobbys, data.additionalActivity]
 
-  const StartDateToEndDate: FC <ITime> = ({dateStart, dataEnd})=>{
+  console.log(mainSectionData[1])
 
-    console.log(dateStart)
+  return(
+    <div className={styles.container} style={{fontFamily: personalization.fontFamily}}>
+      <section className={styles.topSection} style={{borderColor: personalization.color}}>
+        <img className={styles.roundPhoto} src={data.photo} alt="" />
+        <div className={styles.topSectionRight}>
+          <h2 style={{fontSize: `${personalization.fontSize / 1.3}px`, fontWeight: 700}}>{data.name} <span style={{color: personalization.color}}>{data.surname}</span></h2>
+          <div className={styles.info}>
+          {infos.map((e)=> (
+            <div key={e}>
+              {e !== "" ? 
+                  <div className={styles.infoElement}>
+                    <div className={styles.dot} style={{backgroundColor: personalization.color}}></div>
+                    <h3 className={styles.contact}>{e}</h3>
+                  </div>
+              : ""}
 
-    return(
-      <div>{dateStart} - {dataEnd}</div>
-    )
-  }
-
-  const MainSectionElement: FC <IDataElement> = ({data})=>{
-    if(data.length > 0){
-      return(
-        <div className={styles.sectionElementP1}>
-          <h2 className={styles.sectionHeaderP1} style={{fontSize: `${fontSizePx()}px`}}>{data[0].name}</h2>
-          <div>
-            {data.map((e)=>{
-              console.log(e.inputsValues)
-              return(
-                <div key={e.id}>
-                  {data[0].name === 'experience' ? 
-                  <div className={styles.infoP1}>
-                    <h3 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.position}</h3>
-                    <h4 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`, color: personalization.color}}>{e.inputsValues.startDate} - {e.inputsValues.endDate}</h4>
-                    <h4 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.companyName}, <span className={styles.infoRegularP1}>{e.inputsValues.city}</span></h4>
-                    <p className={styles.additionalInfoP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.additionalInfo}</p>
-                  </div> : ""}
-                  {data[0].name === 'education' ? 
-                  <div className={styles.infoP1}>
-                    <h3 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.level}</h3>
-                    <h4 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`, color: personalization.color}}>{e.inputsValues.startDate} - {e.inputsValues.endDate}</h4>
-                    <h4 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.institutionName}, <span className={styles.infoRegularP1}>{e.inputsValues.city}</span></h4>
-                    <p className={styles.additionalInfoP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.additionalInfo}</p>
-                  </div> : ""}
-                  {data[0].name === 'certificates' ? 
-                  <div className={styles.infoP1}>
-                    <h3 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.certificateName}</h3>
-                    <h4 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`, color: personalization.color}}>Data zakończenia: {e.inputsValues.endDate}</h4>
-                    <p className={styles.additionalInfoP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.additionalInfo}</p>
-                  </div> : ""}
-                  {data[0].name === 'skills' ? 
-                  <div className={styles.infoP1}>
-                    <h3 className={styles.infoBoldP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.skillName}</h3>
-                    <p className={styles.additionalInfoP1} style={{fontSize: `${fontSizePx() / 1.5}px`}}>{e.inputsValues.additionalInfo}</p>
-                  </div> : ""}
-                </div>
-              )
-            })}
+            </div>
+          ))}
           </div>
         </div>
-      )
-    }
+      </section>
 
-    }
-
-    console.log(data)
-  return (
-    <div className={styles.container} style={{fontFamily: personalization.font}}>
-        <section className={styles.topSection} style={{borderColor: personalization.color}}>
-            <div className={`${styles.roundPhoto} ${styles.photoP1}`}>
-            </div>
-            <div className={styles.topSectionInfo}>
+      <section className={styles.mainSection}>
+        {mainSectionData.map((e)=> (
+            <div key={e}>
+              {e.length !== 0 ? 
                 <div>
-                    <h2 className={styles.nameP1} style={{fontSize: `${fontSizePx()}px`}}>
-                      {data.name} 
-                      <span style={{color: personalization.color, marginLeft: `${fontSizePx() / 2.5}px`}}>
-                        {data.surname}
-                      </span>
-                    </h2>
+                  <div className={styles.headerDiv}>
+                    <div className={styles.bigDot} style={{backgroundColor: personalization.color, width: `${personalization.fontSize / 2.3}px`}}></div>
+                    <h2 className={styles.header} style={{fontSize: `${personalization.fontSize / 1.3}px`, fontWeight: 700}}>{e[0].name}</h2>
+                  </div>
+                    {e.map((f: any)=> (
+                      <div className={styles.mainSectionElement} key={f}>
+                        <Element values={f} personalization={personalization}/>
+                      </div>
+                    ))}
                 </div>
-                <div className={styles.contactP1}>
-                    <h3 className={styles.contactElementP1}>{data.phoneNumber}</h3>
-                    <h3 className={styles.contactElementP1}>{data.email}</h3>
-                    <h3 className={styles.contactElementP1}>{data.websiteURL}</h3>
-                </div>
+              : ""}
+
             </div>
-        </section>
-        <section className={styles.mainSectionP1}>
-          <MainSectionElement data={data.experience}/>
-          <MainSectionElement data={data.education}/>
-          <MainSectionElement data={data.certificates}/>
-          <MainSectionElement data={data.skills}/>
-        </section>
+          ))}
+      </section>
     </div>
   )
+
 }
 
 export default Pattern1

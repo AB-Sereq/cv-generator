@@ -51,10 +51,17 @@ const SelectPattern: FC<IProps> = ({selectedPattern, setSelectedPattern}) => {
     const patternList: any[] = [{photo: pattern1, id: 1}, {photo: pattern2, id: 2}]
 
   return (
-    <div>
-        {patternList.map((pattern) => (
-            <Pattern key={uuidv4()} id={pattern.id} pattern={pattern.photo} selectedPattern={selectedPattern} setSelectedPattern={setSelectedPattern}/>
-        ))}
+    <div className={styles.container}>
+
+        <div className={styles.patternsContainer}>
+            {patternList.map((pattern) => (
+                <Pattern key={uuidv4()} id={pattern.id} pattern={pattern.photo} selectedPattern={selectedPattern} setSelectedPattern={setSelectedPattern}/>
+            ))}
+        </div>
+        <div className={styles.arrowBtnsContainer}>
+            {selectedPattern > 1 ? <button className={`${styles.mobileBtnArrow} ${styles.mobileBtnArrowLeft}`} onClick={()=>setSelectedPattern(selectedPattern - 1)}>{"<"}</button> :""}
+            {selectedPattern < patternList.length ? <button className={styles.mobileBtnArrow} onClick={()=>setSelectedPattern(selectedPattern + 1)}>{">"}</button> :""}
+        </div>
     </div>
   )
 

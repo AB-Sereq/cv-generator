@@ -12,18 +12,29 @@ import { useState } from "react";
 
 import styles from "@/styles/cv-creator/page.module.css"
 
+import { ResumePersonalizationProvider } from "@/context/ResumePersonalization"
+
+import { UserDataSetContextProvider } from "@/context/UserDataSet"
+
 
 const Page = () => {
     const [step, setStep] = useState<number>(1)
+    const [data, setData] = useState("")
   return (
     <>
         <Navbar/>
         <div className={styles.container}>
+
+          <ResumePersonalizationProvider>
+          <UserDataSetContextProvider>
             <TopSection step={step}/>
-            <MainSection step={step}/>
+            <MainSection step={step} setUserData={setData}/>
             <div>
               <BottomBar step={step} setStep={setStep}/>
             </div>
+          </UserDataSetContextProvider>
+          </ResumePersonalizationProvider>
+          
         </div>
     </>
   )

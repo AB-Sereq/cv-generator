@@ -1,9 +1,11 @@
 .container{
+    bottom: 0;
+    position: absolute;
     display: flex;
     justify-content: space-between;
     height: 60px;
     align-items: center;
-    width: 800px;
+    width: 700px;
 }
 
 .option{
@@ -45,8 +47,8 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-.helvetica{
-    font-family: Helvetica, sans-serif;
+.bahnschrift{
+    font-family: Bahnschrift;
 }
 
 .arial{
@@ -67,4 +69,10 @@
 
 .roboto{
     font-family: Roboto, sans-serif;
+}
+
+@media screen and (max-width: 800px) {
+    .option{
+        display: none;
+    }
 }

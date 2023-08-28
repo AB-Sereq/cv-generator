@@ -39,9 +39,11 @@ const TopSection: FC<IProps> = ({step}) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.dotsContainer}>
         <Element text={texts[0]} number={1} step={step}/>
         <Element text={texts[1]} number={2} step={step}/>
         <Element text={texts[2]} number={3} step={step}/>
+      </div>
     </div>
   )
 }
